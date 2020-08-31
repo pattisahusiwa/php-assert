@@ -4,6 +4,7 @@ namespace Xynha\Assert;
 
 use Xynha\Assert\Helper\AssertBool;
 use Xynha\Assert\Helper\AssertNumeric;
+use Xynha\Assert\Helper\AssertString;
 
 final class Assert
 {
@@ -54,5 +55,14 @@ final class Assert
     public static function isNumeric($value, $handler = null, string $msg = '') : bool
     {
         return AssertNumeric::isNumeric($value, $handler, $msg);
+    }
+
+    /**
+     * @param mixed $value
+     * @param null|string|false $handler
+     */
+    public static function isString($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertString::isString($value, $handler, $msg);
     }
 }
