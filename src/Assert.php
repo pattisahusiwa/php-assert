@@ -46,4 +46,13 @@ final class Assert
     {
         return AssertNumeric::isFloat($value, $handler, $msg);
     }
+
+    /**
+     * @param mixed $value
+     * @param null|string $handler
+     */
+    public static function isNumeric($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertNumeric::isNumeric($value, $handler, $msg);
+    }
 }

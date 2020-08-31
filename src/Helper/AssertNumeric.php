@@ -32,4 +32,18 @@ final class AssertNumeric extends AbstractAssert
         $msg = static::expectMessage('float', $value, $msg);
         return static::handleError($handler, $msg);
     }
+
+    /**
+     * @param mixed $value
+     * @param null|string $handler
+     */
+    public static function isNumeric($value, $handler, string $msg) : bool
+    {
+        if (is_numeric($value) || $value == (int)$value) {
+            return true;
+        }
+
+        $msg = static::expectMessage('float', $value, $msg);
+        return static::handleError($handler, $msg);
+    }
 }
