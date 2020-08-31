@@ -103,4 +103,13 @@ final class Assert
     {
         return AssertObject::isCallable($value, $handler, $msg);
     }
+
+    /**
+     * @param mixed $value
+     * @param null|string|false $handler
+     */
+    public static function isResource($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertObject::isResource($value, $handler, $msg);
+    }
 }
