@@ -8,16 +8,34 @@ final class AssertObjectTest extends TestCase
 
     public function testValidIsCallable()
     {
-        $this->assertTrue(Assert::isCallable([new DateTime(), 'format']));
+        $closure = function () {
+            yield 1;
+        };
 
-        $this->assertTrue(Assert::isCallable(function () {
-        }));
+        $empty = function () {
+        };
+
+        $fnName = 'is_object';
+        $instance = [new DateTime(), 'format'];
+
+        $this->assertTrue(Assert::isCallable($fnName));
+        $this->assertTrue(Assert::isCallable($instance));
+        $this->assertTrue(Assert::isCallable($closure));
+        $this->assertTrue(Assert::isCallable($empty));
     }
 
     public function testInvalidIsCallable()
     {
+        $generator = (function () {
+            yield 1;
+        })();
+        $callback = ['InvalidClass', 'InvalidMethod'];
+        $classname = ['\DateTime', 'format'];
+
         $this->assertFalse(Assert::isCallable([], false));
-        $this->assertFalse(Assert::isCallable(['InvalidClass', 'InvalidMethod'], false));
+        $this->assertFalse(Assert::isCallable($callback, false));
+        $this->assertFalse(Assert::isCallable($generator, false));
+        $this->assertFalse(Assert::isCallable($classname, false));
     }
 
     public function testIsCallableErrorMessage()
@@ -30,24 +48,40 @@ final class AssertObjectTest extends TestCase
 
     public function testValidIsObject()
     {
+        $generator = (function () {
+            yield 1;
+        })();
+
+        $closure = function () {
+            yield 1;
+        };
+
+        $empty = function () {
+        };
+
         $this->assertTrue(Assert::isObject(new stdClass));
+        $this->assertTrue(Assert::isObject($generator));
+        $this->assertTrue(Assert::isObject($closure));
+        $this->assertTrue(Assert::isObject($empty));
     }
 
     public function testInvalidIsObject()
     {
-        $this->assertFalse(Assert::isObject(false, false));
-        $this->assertFalse(Assert::isObject(true, false));
-        $this->assertFalse(Assert::isObject(37, false));
-        $this->assertFalse(Assert::isObject(3.7, false));
+        $fnName = 'is_object';
+        $callback = [new DateTime(), 'format'];
+
         $this->assertFalse(Assert::isObject(null, false));
-        $this->assertFalse(Assert::isObject('', false));
+        $this->assertFalse(Assert::isObject($fnName, false));
+        $this->assertFalse(Assert::isObject($callback, false));
     }
 
     public function testIsObjectErrorMessage()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Expect an object. Got: string');
+        $callback = [new DateTime(), 'format'];
 
-        Assert::isObject('0.0');
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect an object. Got: array');
+
+        Assert::isObject($callback);
     }
 }
