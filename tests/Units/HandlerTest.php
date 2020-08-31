@@ -37,4 +37,20 @@ final class HandlerTest extends TestCase
 
         Assert::isBool('false', UnexpectedValueException::class, 'Custom exception message');
     }
+
+    public function testInvalidClassname()
+    {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('$handler is not a class name');
+
+        Assert::isBool(null, 'InvalidClassName');
+    }
+
+    public function testNotThrowable()
+    {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('$handler is not a Throwable');
+
+        Assert::isBool(null, '\DateTime');
+    }
 }
