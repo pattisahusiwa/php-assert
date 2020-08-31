@@ -90,15 +90,6 @@ final class Assert
      * @param mixed $value
      * @param null|string|false $handler
      */
-    public static function isCountable($value, $handler = null, string $msg = '') : bool
-    {
-        return AssertArray::isCountable($value, $handler, $msg);
-    }
-
-    /**
-     * @param mixed $value
-     * @param null|string|false $handler
-     */
     public static function isObject($value, $handler = null, string $msg = '') : bool
     {
         return AssertObject::isObject($value, $handler, $msg);

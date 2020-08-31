@@ -63,34 +63,4 @@ final class AssertArrayTest extends TestCase
 
         Assert::isIterable($fn);
     }
-
-    public function testValidIsCountable()
-    {
-        $iter = new ArrayIterator([1, 2, 3]);
-
-        $this->assertTrue(Assert::isCountable([]));
-        $this->assertTrue(Assert::isCountable(new ArrayIterator()));
-        $this->assertTrue(Assert::isCountable($iter));
-    }
-
-    public function testInvalidIsCountable()
-    {
-        $fn = (function () {
-            yield 1;
-        })();
-
-        $this->assertFalse(Assert::isCountable($fn, false));
-        $this->assertFalse(Assert::isCountable(null, false));
-    }
-
-    public function testIsCountableErrorMessage()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Expect a Countable. Got: Generator');
-
-        $fn = (function () {
-            yield 1;
-        })();
-        Assert::isCountable($fn);
-    }
 }
