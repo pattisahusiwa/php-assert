@@ -4,6 +4,7 @@ namespace Xynha\Assert;
 
 use Xynha\Assert\Helper\AssertArray;
 use Xynha\Assert\Helper\AssertBool;
+use Xynha\Assert\Helper\AssertMixed;
 use Xynha\Assert\Helper\AssertNumeric;
 use Xynha\Assert\Helper\AssertObject;
 use Xynha\Assert\Helper\AssertString;
@@ -111,5 +112,32 @@ final class Assert
     public static function isResource($value, $handler = null, string $msg = '') : bool
     {
         return AssertObject::isResource($value, $handler, $msg);
+    }
+
+    /**
+     * @param mixed $value
+     * @param null|string|false $handler
+     */
+    public static function isNull($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertMixed::isNull($value, $handler, $msg);
+    }
+
+    /**
+     * @param mixed $value
+     * @param null|string|false $handler
+     */
+    public static function isNotNull($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertMixed::isNotNull($value, $handler, $msg);
+    }
+
+    /**
+     * @param mixed $value
+     * @param null|string|false $handler
+     */
+    public static function isScalar($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertMixed::isScalar($value, $handler, $msg);
     }
 }
