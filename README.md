@@ -1,6 +1,6 @@
 # PHP Assert
+[![Coverage Status](https://coveralls.io/repos/github/pattisahusiwa/php-assert/badge.svg)](https://coveralls.io/github/pattisahusiwa/php-assert)
 [![Build](https://github.com/pattisahusiwa/php-assert/workflows/Build/badge.svg?branch=master)](https://github.com/pattisahusiwa/php-assert/actions)
-[![Coverage Status](https://coveralls.io/repos/github/pattisahusiwa/php-assert/badge.svg?branch=master)](https://coveralls.io/github/pattisahusiwa/php-assert?branch=master)
 [![License](https://img.shields.io/packagist/l/xynha/php-assert)](https://github.com/pattisahusiwa/php-assert/blob/master/LICENSE)
 [![PHP Version](https://img.shields.io/packagist/php-v/xynha/php-assert)](https://packagist.org/packages/xynha/php-assert)
 [![Stable Version](https://img.shields.io/packagist/v/xynha/php-assert?label=stable)](https://github.com/pattisahusiwa/php-assert/releases)
