@@ -6,7 +6,8 @@
 [![Stable Version](https://img.shields.io/packagist/v/xynha/php-assert?label=stable)](https://github.com/pattisahusiwa/php-assert/releases)
 [![Unstable Version](https://img.shields.io/packagist/v/xynha/php-assert?include_prereleases&label=unstable)](https://github.com/pattisahusiwa/php-assert)
 
-Assertion done right. Static analyzer friendly assertion library.
+
+Assertion library done right for modern PHP and static analyzer friendly.
 
 ## Installation
 Use [composer](https://getcomposer.org/) to install the library.
