@@ -4,6 +4,7 @@ namespace Xynha\Assert;
 
 use Xynha\Assert\Helper\AssertArray;
 use Xynha\Assert\Helper\AssertBool;
+use Xynha\Assert\Helper\AssertCallable;
 use Xynha\Assert\Helper\AssertNumeric;
 use Xynha\Assert\Helper\AssertObject;
 use Xynha\Assert\Helper\AssertString;
@@ -84,5 +85,14 @@ final class Assert
     public static function isObject($value, $handler = null, string $msg = '') : bool
     {
         return AssertObject::isObject($value, $handler, $msg);
+    }
+
+    /**
+     * @param mixed $value
+     * @param null|string|false $handler
+     */
+    public static function isCallable($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertCallable::isCallable($value, $handler, $msg);
     }
 }
