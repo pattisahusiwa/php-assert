@@ -16,10 +16,11 @@ final class AssertNumericTest extends TestCase
 
     public function testInvalidInt()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Expect a integer. Got: double');
-
-        $this->assertTrue(Assert::isInt(1.0));
+        $this->assertFalse(Assert::isInt(1.0, false));
+        $this->assertFalse(Assert::isInt('1337', false));
+        $this->assertFalse(Assert::isInt('0x539', false));
+        $this->assertFalse(Assert::isInt('02471', false));
+        $this->assertFalse(Assert::isInt('0b10100111001', false));
     }
 
     public function testValidFloat()
@@ -30,10 +31,9 @@ final class AssertNumericTest extends TestCase
 
     public function testInvalidFloat()
     {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('Expect a float. Got: integer');
-
-        $this->assertTrue(Assert::isFloat(10));
+        $this->assertFalse(Assert::isFloat(10, false));
+        $this->assertFalse(Assert::isFloat('1.0', false));
+        $this->assertFalse(Assert::isFloat('1337e0', false));
     }
 
     public function testValidNumeric()
@@ -55,9 +55,18 @@ final class AssertNumericTest extends TestCase
         $this->assertTrue(Assert::isNumeric('9.1'));
     }
 
-    public function testValidStringNumeric()
+    public function testInvalidNumeric()
     {
-        $this->assertTrue(Assert::isNumeric('0x539'));
-        $this->assertTrue(Assert::isNumeric('0b10100111001'));
+        $this->assertFalse(Assert::isNumeric('0x539', false));
+        $this->assertFalse(Assert::isNumeric('0b10100111001', false));
+
+        $this->assertFalse(Assert::isNumeric('string', false));
+        $this->assertFalse(Assert::isNumeric('', false));
+
+        $this->assertFalse(Assert::isNumeric(false, false));
+        $this->assertFalse(Assert::isNumeric(true, false));
+
+        $this->assertFalse(Assert::isNumeric(null, false));
+        $this->assertFalse(Assert::isNumeric([], false));
     }
 }

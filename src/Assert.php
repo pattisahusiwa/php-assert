@@ -10,20 +10,20 @@ final class Assert
 
     /**
      * @param mixed $value
-     * @param null|string $handler
+     * @param null|string|false $handler
      */
     public static function isBool($value, $handler = null, string $msg = '') : bool
     {
         return AssertBool::isBool($value, $handler, $msg);
     }
 
-    /** @param null|string $handler */
+    /** @param null|string|false $handler */
     public static function isTrue(bool $value, $handler = null, string $msg = '') : bool
     {
         return AssertBool::isTrue($value, $handler, $msg);
     }
 
-    /** @param null|string $handler */
+    /** @param null|string|false $handler */
     public static function isFalse(bool $value, $handler = null, string $msg = '') : bool
     {
         return AssertBool::isFalse($value, $handler, $msg);
@@ -31,7 +31,7 @@ final class Assert
 
     /**
      * @param mixed $value
-     * @param null|string $handler
+     * @param null|string|false $handler
      */
     public static function isInt($value, $handler = null, string $msg = '') : bool
     {
@@ -40,7 +40,7 @@ final class Assert
 
     /**
      * @param mixed $value
-     * @param null|string $handler
+     * @param null|string|false$handler
      */
     public static function isFloat($value, $handler = null, string $msg = '') : bool
     {
@@ -49,7 +49,7 @@ final class Assert
 
     /**
      * @param mixed $value
-     * @param null|string $handler
+     * @param null|string|false $handler
      */
     public static function isNumeric($value, $handler = null, string $msg = '') : bool
     {

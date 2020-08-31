@@ -7,7 +7,7 @@ final class AssertBool extends AbstractAssert
 
     /**
      * @param mixed $value
-     * @param null|string $handler
+     * @param null|string|false $handler
      */
     public static function isBool($value, $handler, string $msg) : bool
     {
@@ -19,7 +19,7 @@ final class AssertBool extends AbstractAssert
         return static::handleError($handler, $msg);
     }
 
-    /** @param null|string $handler */
+    /** @param null|string|false $handler */
     public static function isTrue(bool $value, $handler, string $msg) : bool
     {
         if ($value === true) {
@@ -30,7 +30,7 @@ final class AssertBool extends AbstractAssert
         return static::handleError($handler, $msg);
     }
 
-    /** @param null|string $handler */
+    /** @param null|string|false $handler */
     public static function isFalse(bool $value, $handler, string $msg) : bool
     {
         if ($value === false) {

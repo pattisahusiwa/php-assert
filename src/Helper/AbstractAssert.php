@@ -9,9 +9,13 @@ use Throwable;
 abstract class AbstractAssert
 {
 
-    /** @param null|string $handler */
-    protected static function handleError($handler = null, string $msg = '') : bool
+    /** @param null|string|false $handler */
+    protected static function handleError($handler, string $msg) : bool
     {
+        if ($handler === false) {
+            return false;
+        }
+
         if (empty($handler)) {
             throw new InvalidArgumentException($msg);
         }

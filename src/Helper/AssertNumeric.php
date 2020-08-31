@@ -7,7 +7,7 @@ final class AssertNumeric extends AbstractAssert
 
     /**
      * @param mixed $value
-     * @param null|string $handler
+     * @param null|string|false $handler
      */
     public static function isInt($value, $handler, string $msg) : bool
     {
@@ -21,7 +21,7 @@ final class AssertNumeric extends AbstractAssert
 
     /**
      * @param mixed $value
-     * @param null|string $handler
+     * @param null|string|false $handler
      */
     public static function isFloat($value, $handler, string $msg) : bool
     {
@@ -35,11 +35,11 @@ final class AssertNumeric extends AbstractAssert
 
     /**
      * @param mixed $value
-     * @param null|string $handler
+     * @param null|string|false $handler
      */
     public static function isNumeric($value, $handler, string $msg) : bool
     {
-        if (is_numeric($value) || $value == (int)$value) {
+        if (is_numeric($value)) {
             return true;
         }
 
