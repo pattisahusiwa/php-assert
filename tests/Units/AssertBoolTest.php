@@ -20,6 +20,14 @@ final class AssertBoolTest extends TestCase
         $this->assertFalse(Assert::isBool([], false));
     }
 
+    public function testBoolErrorMessage()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect a boolean. Got: integer');
+
+        Assert::isBool(0);
+    }
+
     public function testValidTrue()
     {
         $this->assertTrue(Assert::isTrue(true));
@@ -30,6 +38,14 @@ final class AssertBoolTest extends TestCase
         $this->assertFalse(Assert::isTrue(false, false));
     }
 
+    public function testTrueErrorMessage()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect a value to be true. Got: false');
+
+        Assert::isTrue(false);
+    }
+
     public function testValidFalse()
     {
         $this->assertTrue(Assert::isFalse(false));
@@ -38,5 +54,13 @@ final class AssertBoolTest extends TestCase
     public function testInvalidFalse()
     {
         $this->assertFalse(Assert::isFalse(true, false));
+    }
+
+    public function testFalseErrorMessage()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect a value to be false. Got: true');
+
+        Assert::isFalse(true);
     }
 }

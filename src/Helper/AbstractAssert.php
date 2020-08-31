@@ -50,6 +50,6 @@ abstract class AbstractAssert
 
         $got = $got !== '' ? $got : static::typeToString($value);
 
-        return 'Expect a ' . $expected . '. Got: ' . $got;
+        return 'Expect ' . $expected . '. Got: ' . $got;
     }
 }

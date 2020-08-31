@@ -15,7 +15,7 @@ final class AssertBool extends AbstractAssert
             return true;
         }
 
-        $msg = static::expectMessage('boolean', $value, $msg);
+        $msg = static::expectMessage('a boolean', $value, $msg);
         return static::handleError($handler, $msg);
     }
 
@@ -26,7 +26,7 @@ final class AssertBool extends AbstractAssert
             return true;
         }
 
-        $msg = static::expectMessage('value to be true', $value, $msg, 'false');
+        $msg = static::expectMessage('a value to be true', $value, $msg, 'false');
         return static::handleError($handler, $msg);
     }
 
@@ -37,7 +37,7 @@ final class AssertBool extends AbstractAssert
             return true;
         }
 
-        $msg = static::expectMessage('value to be false', $value, $msg, 'true');
+        $msg = static::expectMessage('a value to be false', $value, $msg, 'true');
         return static::handleError($handler, $msg);
     }
 }

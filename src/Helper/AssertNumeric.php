@@ -15,7 +15,7 @@ final class AssertNumeric extends AbstractAssert
             return true;
         }
 
-        $msg = static::expectMessage('integer', $value, $msg);
+        $msg = static::expectMessage('an integer', $value, $msg);
         return static::handleError($handler, $msg);
     }
 
@@ -29,7 +29,7 @@ final class AssertNumeric extends AbstractAssert
             return true;
         }
 
-        $msg = static::expectMessage('float', $value, $msg);
+        $msg = static::expectMessage('a float', $value, $msg);
         return static::handleError($handler, $msg);
     }
 
@@ -43,7 +43,7 @@ final class AssertNumeric extends AbstractAssert
             return true;
         }
 
-        $msg = static::expectMessage('float', $value, $msg);
+        $msg = static::expectMessage('a numeric value', $value, $msg);
         return static::handleError($handler, $msg);
     }
 }

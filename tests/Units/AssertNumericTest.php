@@ -23,6 +23,14 @@ final class AssertNumericTest extends TestCase
         $this->assertFalse(Assert::isInt('0b10100111001', false));
     }
 
+    public function testIntErrorMessage()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect an integer. Got: double');
+
+        Assert::isInt(0.0);
+    }
+
     public function testValidFloat()
     {
         $this->assertTrue(Assert::isFloat(1.0));
@@ -34,6 +42,14 @@ final class AssertNumericTest extends TestCase
         $this->assertFalse(Assert::isFloat(10, false));
         $this->assertFalse(Assert::isFloat('1.0', false));
         $this->assertFalse(Assert::isFloat('1337e0', false));
+    }
+
+    public function testFloatErrorMessage()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect a float. Got: integer');
+
+        Assert::isFloat(0);
     }
 
     public function testValidNumeric()
@@ -68,5 +84,13 @@ final class AssertNumericTest extends TestCase
 
         $this->assertFalse(Assert::isNumeric(null, false));
         $this->assertFalse(Assert::isNumeric([], false));
+    }
+
+    public function testNumericErrorMessage()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect a numeric value. Got: string');
+
+        Assert::isNumeric('');
     }
 }
