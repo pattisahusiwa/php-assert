@@ -1,16 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Xynha\Assert\Utils;
+namespace Xynha\Assert\Helper;
 
-trait AssertBool
+final class AssertBool extends AbstractAssert
 {
-    use AbstractHandler;
 
     /**
      * @param mixed $value
      * @param null|string $handler
      */
-    public static function isBool($value, $handler = null, string $msg = '') : bool
+    public static function isBool($value, $handler, string $msg) : bool
     {
         if (is_bool($value)) {
             return true;
@@ -21,7 +20,7 @@ trait AssertBool
     }
 
     /** @param null|string $handler */
-    public static function isTrue(bool $value, $handler = null, string $msg = '') : bool
+    public static function isTrue(bool $value, $handler, string $msg) : bool
     {
         if ($value === true) {
             return true;
@@ -32,7 +31,7 @@ trait AssertBool
     }
 
     /** @param null|string $handler */
-    public static function isFalse(bool $value, $handler = null, string $msg = '') : bool
+    public static function isFalse(bool $value, $handler, string $msg) : bool
     {
         if ($value === false) {
             return true;

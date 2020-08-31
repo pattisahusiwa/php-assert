@@ -1,16 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace Xynha\Assert\Utils;
+namespace Xynha\Assert\Helper;
 
-trait AssertNumeric
+final class AssertNumeric extends AbstractAssert
 {
-    use AbstractHandler;
 
     /**
      * @param mixed $value
      * @param null|string $handler
      */
-    public static function isInt($value, $handler = null, string $msg = '') : bool
+    public static function isInt($value, $handler, string $msg) : bool
     {
         if (is_int($value)) {
             return true;
@@ -24,7 +23,7 @@ trait AssertNumeric
      * @param mixed $value
      * @param null|string $handler
      */
-    public static function isFloat($value, $handler = null, string $msg = '') : bool
+    public static function isFloat($value, $handler, string $msg) : bool
     {
         if (is_float($value)) {
             return true;

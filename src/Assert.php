@@ -2,36 +2,48 @@
 
 namespace Xynha\Assert;
 
-use InvalidArgumentException;
-use LogicException;
-use Throwable;
-use Xynha\Assert\Utils\AssertBool;
-use Xynha\Assert\Utils\AssertNumeric;
+use Xynha\Assert\Helper\AssertBool;
+use Xynha\Assert\Helper\AssertNumeric;
 
 final class Assert
 {
-    use AssertBool;
-    use AssertNumeric;
+
+    /**
+     * @param mixed $value
+     * @param null|string $handler
+     */
+    public static function isBool($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertBool::isBool($value, $handler, $msg);
+    }
 
     /** @param null|string $handler */
-    protected static function handleError($handler = null, string $msg = '') : bool
+    public static function isTrue(bool $value, $handler = null, string $msg = '') : bool
     {
-        if (empty($handler)) {
-            throw new InvalidArgumentException($msg);
-        }
+        return AssertBool::isTrue($value, $handler, $msg);
+    }
 
-        if (class_exists($handler) === false) {
-            throw new LogicException('$handler is not a class name');
-        }
+    /** @param null|string $handler */
+    public static function isFalse(bool $value, $handler = null, string $msg = '') : bool
+    {
+        return AssertBool::isFalse($value, $handler, $msg);
+    }
 
-        // @todo: Do not reconstruct the handler. Atm, We have no choice
-        // ($handler instanceof Throwable) will return false
-        // is_a($handler, Throwable::class) will return false
-        $object = new $handler;
-        if ($object instanceof Throwable) {
-            throw new $handler($msg);
-        }
+    /**
+     * @param mixed $value
+     * @param null|string $handler
+     */
+    public static function isInt($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertNumeric::isInt($value, $handler, $msg);
+    }
 
-        throw new LogicException('$handler is not a Throwable');
+    /**
+     * @param mixed $value
+     * @param null|string $handler
+     */
+    public static function isFloat($value, $handler = null, string $msg = '') : bool
+    {
+        return AssertNumeric::isFloat($value, $handler, $msg);
     }
 }
