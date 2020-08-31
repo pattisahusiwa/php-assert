@@ -6,6 +6,28 @@ use Xynha\Assert\Assert;
 final class AssertObjectTest extends TestCase
 {
 
+    public function testValidIsCallable()
+    {
+        $this->assertTrue(Assert::isCallable([new DateTime(), 'format']));
+
+        $this->assertTrue(Assert::isCallable(function () {
+        }));
+    }
+
+    public function testInvalidIsCallable()
+    {
+        $this->assertFalse(Assert::isCallable([], false));
+        $this->assertFalse(Assert::isCallable(['InvalidClass', 'InvalidMethod'], false));
+    }
+
+    public function testIsCallableErrorMessage()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect a callable. Got: string');
+
+        Assert::isCallable('0.0');
+    }
+
     public function testValidIsObject()
     {
         $this->assertTrue(Assert::isObject(new stdClass));
