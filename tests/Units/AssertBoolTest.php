@@ -6,13 +6,13 @@ use Xynha\Assert\Assert;
 final class AssertBoolTest extends TestCase
 {
 
-    public function testValidBoolean()
+    public function testValidIsBool()
     {
         $this->assertTrue(Assert::isBool(true));
         $this->assertTrue(Assert::isBool(false));
     }
 
-    public function testInvalidBoolean()
+    public function testInvalidIsBool()
     {
         $this->assertFalse(Assert::isBool(0, false));
         $this->assertFalse(Assert::isBool('', false));
@@ -20,7 +20,7 @@ final class AssertBoolTest extends TestCase
         $this->assertFalse(Assert::isBool([], false));
     }
 
-    public function testBoolErrorMessage()
+    public function testIsBoolErrorMessage()
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Expect a boolean. Got: integer');
@@ -28,17 +28,17 @@ final class AssertBoolTest extends TestCase
         Assert::isBool(0);
     }
 
-    public function testValidTrue()
+    public function testValidIsTrue()
     {
         $this->assertTrue(Assert::isTrue(true));
     }
 
-    public function testInvalidTrue()
+    public function testInvalidIsTrue()
     {
         $this->assertFalse(Assert::isTrue(false, false));
     }
 
-    public function testTrueErrorMessage()
+    public function testIsTrueErrorMessage()
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Expect a value to be true. Got: false');
@@ -46,17 +46,17 @@ final class AssertBoolTest extends TestCase
         Assert::isTrue(false);
     }
 
-    public function testValidFalse()
+    public function testValidIsFalse()
     {
         $this->assertTrue(Assert::isFalse(false));
     }
 
-    public function testInvalidFalse()
+    public function testInvalidIsFalse()
     {
         $this->assertFalse(Assert::isFalse(true, false));
     }
 
-    public function testFalseErrorMessage()
+    public function testIsFalseErrorMessage()
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Expect a value to be false. Got: true');
