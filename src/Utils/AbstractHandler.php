@@ -6,7 +6,7 @@ trait AbstractHandler
 {
 
     /** @param null|string $handler */
-    abstract protected static function handleError($handler = null, string $msg = '') : void;
+    abstract protected static function handleError($handler = null, string $msg = '') : bool;
 
     /** @param mixed $value */
     protected static function typeToString($value) : string

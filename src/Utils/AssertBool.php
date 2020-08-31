@@ -17,7 +17,6 @@ trait AssertBool
         }
 
         $msg = static::expectMessage('boolean', $value, $msg);
-        static::handleError($handler, $msg);
-        return false;
+        return static::handleError($handler, $msg);
     }
 }

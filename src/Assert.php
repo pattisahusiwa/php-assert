@@ -2,7 +2,6 @@
 
 namespace Xynha\Assert;
 
-use Exception;
 use InvalidArgumentException;
 use LogicException;
 use Throwable;
@@ -13,7 +12,7 @@ final class Assert
     use AssertBool;
 
     /** @param null|string $handler */
-    protected static function handleError($handler = null, string $msg = '') : void
+    protected static function handleError($handler = null, string $msg = '') : bool
     {
         if (empty($handler)) {
             throw new InvalidArgumentException($msg);
@@ -23,7 +22,7 @@ final class Assert
             throw new LogicException('$handler is not a class name');
         }
 
-        // @todo: Do not reconstruct the handler
+        // @todo: Do not reconstruct the handler. Atm, We have no choice
         // ($handler instanceof Throwable) will return false
         // is_a($handler, Throwable::class) will return false
         $object = new $handler;
