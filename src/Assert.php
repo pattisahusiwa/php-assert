@@ -6,10 +6,12 @@ use InvalidArgumentException;
 use LogicException;
 use Throwable;
 use Xynha\Assert\Utils\AssertBool;
+use Xynha\Assert\Utils\AssertNumeric;
 
 final class Assert
 {
     use AssertBool;
+    use AssertNumeric;
 
     /** @param null|string $handler */
     protected static function handleError($handler = null, string $msg = '') : bool
