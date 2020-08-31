@@ -19,4 +19,18 @@ trait AssertNumeric
         $msg = static::expectMessage('integer', $value, $msg);
         return static::handleError($handler, $msg);
     }
+
+    /**
+     * @param mixed $value
+     * @param null|string $handler
+     */
+    public static function isFloat($value, $handler = null, string $msg = '') : bool
+    {
+        if (is_float($value)) {
+            return true;
+        }
+
+        $msg = static::expectMessage('float', $value, $msg);
+        return static::handleError($handler, $msg);
+    }
 }

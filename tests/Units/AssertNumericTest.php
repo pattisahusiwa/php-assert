@@ -18,4 +18,17 @@ final class AssertNumericTest extends TestCase
 
         $this->assertTrue(Assert::isInt(1.0));
     }
+
+    public function testValidFloat()
+    {
+        $this->assertTrue(Assert::isFloat(1.0));
+    }
+
+    public function testInvalidFloat()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expect a float. Got: integer');
+
+        $this->assertTrue(Assert::isFloat(10));
+    }
 }
