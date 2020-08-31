@@ -15,12 +15,14 @@ trait AbstractHandler
     }
 
     /** @param mixed $value */
-    protected static function expectMessage(string $expected, $value, string $message) : string
+    protected static function expectMessage(string $expected, $value, string $message, string $got = '') : string
     {
         if (!empty($message)) {
             return $message;
         }
 
-        return 'Expect a ' . $expected . '. Got: ' . static::typeToString($value);
+        $got = $got !== '' ? $got : static::typeToString($value);
+
+        return 'Expect a ' . $expected . '. Got: ' . $got;
     }
 }
